@@ -9,11 +9,20 @@ function draw(){
     // //闭合路径。会拉一条从当前点到path起始点的直线。如果当前点与起始点重合，则什么都不做
     // ctx.closePath();
     // ctx.stroke(); //绘制路径。
-    // let img = document.getElementById("pic_02");
-    // img.onload = function() {
-    //     ctx.drawImage(img, 0, 0, 200, 150, 100, 0, 200, 150);
-    // }
-    // ctx.drawImage(img, 0, 0, 200, 50, 0, 0, 50, 50);
-    // ctx.drawImage(img, 10 , 10);
+    let img = document.getElementById("init_pic_01");
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, 40, 50, 100, 0, 40, 50);
+    }
 }
-// draw();
+$("#my_canvas").click(function(e){
+    alert(e.pageX);
+    alert(e.pageY)
+    // let ev = ev || window.event;
+    // let mousePos = mouseCoords(ev);
+    // mousePosX = mousePos.x;
+    // mousePosY = mousePos.y;
+    // console.log(mousePosX);
+    // console.log(mousePosY);
+    // makearc(mousePosX,mousePosY,GetRandomNum(4,4),0,180,'red');
+})
+draw();

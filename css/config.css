@@ -1,10 +1,14 @@
 body{
     position: relative;
 }
+button{
+    outline:none;
+}
 #my_canvas{
     /*background: beige no-repeat;*/
     background-size:100% 100%;
     margin-left: 45px;
+    margin-top: 75px;
     border-radius: 4px;
     z-index: 255;
     position: absolute;
@@ -26,7 +30,7 @@ body{
     margin-left: 45px;
     padding: 10px;
     width: 1400px;
-    height: 680px;
+    height: 700px;
     border-radius: 4px;
 }
 #top_button_area{
@@ -43,9 +47,9 @@ body{
     width: 100px;
     height: 75px;
     padding: 5px;
-
     float: left;
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-left: 5px;
 }
 .game_title span{
     text-decoration:none;
@@ -61,16 +65,14 @@ body{
     -moz-transition:all linear 0.30s;
     transition:all linear 0.30s;
 }
-.top_item{
-    float: left;
-}
-.top_item_01{
-    background-image: url(../img/buttons/smallGuppyBtn_1.jpg);
+.top_item button{
     background-size:100% 100%;
     width: 100px;
     height: 75px;
-    border: 0px;
+    border: 0;
     outline:none;
+    border-radius: 10px;
+    float: left;
 }
 .top_menu{
     float:right;
@@ -100,5 +102,11 @@ body{
     border: none;
     border-radius: 50%;
     cursor: default;
+}
+.top_item_02 button{
+    margin-left: 30px;
+}
+.top_item_03 button{
+    margin-left: 30px;
 }
 
