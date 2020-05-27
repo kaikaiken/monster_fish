@@ -37,7 +37,7 @@ body{
     margin-left: 45px;
     position:absolute;
     border-radius: 3px;
-    opacity: 0.6;
+    opacity: 0.87;
 }
 .game_title{
     width: 100px;
@@ -64,12 +64,13 @@ body{
 .top_item{
     float: left;
 }
-#top_item_01{
+.top_item_01{
     background-image: url(../img/buttons/smallGuppyBtn_1.jpg);
     background-size:100% 100%;
     width: 100px;
     height: 75px;
     border: 0px;
+    outline:none;
 }
 .top_menu{
     float:right;
