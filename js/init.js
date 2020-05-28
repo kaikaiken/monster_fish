@@ -1,12 +1,10 @@
 const food_speed = 1;
 let food_number;
-let current_food ;
 let food_level;
 let ctx;
 function init() {
     food_number = 3;
-    current_food = 0;
-    food_level = 3;
+    food_level = 1;
     let canvas = document.getElementById('my_canvas');
     if(!canvas.getContext) return;
     ctx = canvas.getContext("2d");
@@ -77,19 +75,33 @@ function foodMove() {
         if(img.getAttribute("data-use") === "1"){
             let temp_y = img.getAttribute("data-y");
             let temp_x = img.getAttribute("data-x");
+            // img.src = " ";
             let new_y = parseInt(temp_y , 10) + food_speed;
             if(new_y === 542){
                 ctx.clearRect(parseInt(temp_x , 10), parseInt(temp_y , 10) , 40 , 50);
                 img.setAttribute("data-use" , "0");
             }else{
-                ctx.clearRect(parseInt(temp_x , 10), parseInt(temp_y , 10) , 40 , 50);
+                foodAnimate(img);
+                ctx.clearRect(parseInt(temp_x , 10), parseInt(temp_y , 10) , 40 , 40);
                 img.setAttribute("data-y" , new_y.toString());
-                ctx.drawImage(img, 0, 0, 40, 50, img.getAttribute("data-x"), new_y, 40, 50);
+                ctx.drawImage(img, img.getAttribute("data-x"), new_y, 40, 40);
             }
         }
     }
     requestAnimationFrame(foodMove);
 
+}
+
+function foodAnimate(img){
+    let animate = img.getAttribute("data-current");
+    if(animate === "10"){
+        img.src = "./img/foods/food_"+ 1 +".jpg";
+        img.setAttribute("data-current" , "1");
+    }else{
+        animate++;
+        img.src = "./img/foods/food_"+ animate +".jpg";
+        img.setAttribute("data-current" , animate);
+    }
 }
 
 $(document).ready(function(){

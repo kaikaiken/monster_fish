@@ -7,6 +7,7 @@ function change_mouse_up(btn , type) {
         let FoodLevel = btn.getAttribute("name").slice(-1);
         if( FoodLevel < 5){
             FoodLevel++;
+            food_level++;
             let newName = btn.getAttribute("name").slice(0 , -1) + FoodLevel;
             btn.setAttribute("name" , newName);
         }
