@@ -1,10 +1,10 @@
 //鼠标点击加食物
 $(document).ready(function(){
     $("#my_canvas").click(function(e){
-        // let xPos = e.pageX - document.getElementById('my_canvas').offsetLeft - 10;
-        // let yPos = e.pageY - document.getElementById('my_canvas').offsetTop - 10;
-        // createFood(xPos , yPos);
-        createFood(e.pageX-12 ,e.pageY-12);
+        if(e.pageY <= 620 && e.pageX >= 45 && e.pageX<=1425){
+            createFood(e.pageX-12 ,e.pageY-12);
+        }
+
     })
 });
 

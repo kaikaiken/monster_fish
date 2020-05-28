@@ -81,7 +81,7 @@ function init() {
     //硬币初始化参数
     //硬币总数量
     coin_total_num = 0;
-    coin_drop_speed = 2;
+    coin_drop_speed = 1;
     coin_create_time = 18000;
 
 }
