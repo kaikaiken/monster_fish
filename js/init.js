@@ -1,13 +1,54 @@
-const food_speed = 1;
-let food_number;
-let food_level;
+//*canvas参数
+let my_canvas;
 let ctx;
+//*小鱼数组参数
+//参数有
+// 鱼的id
+//  Guppy_ID
+// 鱼的大小，1为小鱼，2为中鱼，3为大鱼
+//  Guppy_type;
+// //鱼的血量
+//  Guppy_health;
+// //鱼的状态，1为正常，2为饥饿，3为死亡,4为消失
+//  Guppy_state;
+// //鱼的方向，0为左，9为右
+//  Guppy_direct;
+// //鱼是否需要移动
+//  Guppy_move;
+// //鱼前往的x方向
+//  Guppy_to_x;
+// //鱼前往的y方向
+//  Guppy_to_y;
+let fishes = [];
+//场上有的鱼数量
+let fish_current_num;
+//添加鱼的数量参数;
+let fish_total_num;
+//鱼掉落速度
+let fish_drop_speed;
+
+//*食物参数
+//食物下落速度
+const food_speed = 1;
+// 食物等级
+let food_level;
+
 function init() {
-    food_number = 3;
+    //canvas初始化
+    my_canvas = document.getElementById('my_canvas');
+    if(!my_canvas.getContext) return;
+    ctx = my_canvas.getContext("2d");
+    ctx.globalCompositeOperation = "lighten";
+
+    //小鱼初始化
+    fish_current_num = 0;
+    fish_total_num = 0;
+    fish_drop_speed = 6;
+    addFish();
+
+    // 食物初始化参数
     food_level = 1;
-    let canvas = document.getElementById('my_canvas');
-    if(!canvas.getContext) return;
-    ctx = canvas.getContext("2d");
+
 }
 
 function draw(){
@@ -27,85 +68,11 @@ function draw(){
         ctx.drawImage(img, 0, 0, 40, 50, 100, 0, 40, 50);
     }
 }
-$(document).ready(function(){
-    $("#my_canvas").click(function(e){
-        let xPos = e.pageX - document.getElementById('my_canvas').offsetLeft - 10;
-        let yPos = e.pageY - document.getElementById('my_canvas').offsetTop - 10;
-        createFood(xPos , yPos);
-        // draw();
-    })
-});
-function createFood(x , y) {
-    // $("#buffer").append('<img id="create_food_' + food_number +'" src="./img/foods/food.png">')
-    // let food_img = document.getElementById("create_food_" + food_number);
-    // ctx.drawImage(food_img, 0, 0, 40, 50, x, y, 40, 50);
-    // food_number++;
-    // food_img.setAttribute("data-x" , x);
-    // food_img.setAttribute("data-y" , y);
-    // food_img.onload = function(){
-    //     foodMove();
-    //  }
-    for(let i=0;i < food_level;i++){
-        let food_img = document.getElementById("create_food_0" + i);
-        if(food_img.getAttribute("data-use") === "0"){
-            food_img.setAttribute("data-use" , "1");
-            food_img.setAttribute("data-x" , x);
-            food_img.setAttribute("data-y" , y);
-            break;
-        }
-    }
 
 
-}
 
-function foodMove() {
-    // for(let i = 0 ; i < food_number ; i ++){
-    //     let img = document.getElementById("create_food_" + i);
-    //     let temp_y = img.getAttribute("data-y");
-    //     let temp_x = img.getAttribute("data-x");
-    //     let new_y = parseInt(temp_y , 10) + food_speed;
-    //     ctx.clearRect(parseInt(temp_x , 10), parseInt(temp_y , 10) , 40 , 50);
-    //     // img.offsetTop = img.offsetTop+ food_speed;
-    //     img.setAttribute("data-y" , new_y.toString());
-    //     ctx.drawImage(img, 0, 0, 40, 50, img.getAttribute("data-x"), new_y, 40, 50);
-    // }
-    // requestAnimationFrame(foodMove);
-    for(let i = 0 ; i < food_level ; i ++){
-        let img = document.getElementById("create_food_0" + i);
-        if(img.getAttribute("data-use") === "1"){
-            let temp_y = img.getAttribute("data-y");
-            let temp_x = img.getAttribute("data-x");
-            // img.src = " ";
-            let new_y = parseInt(temp_y , 10) + food_speed;
-            if(new_y === 542){
-                ctx.clearRect(parseInt(temp_x , 10), parseInt(temp_y , 10) , 40 , 50);
-                img.setAttribute("data-use" , "0");
-            }else{
-                foodAnimate(img);
-                ctx.clearRect(parseInt(temp_x , 10), parseInt(temp_y , 10) , 40 , 40);
-                img.setAttribute("data-y" , new_y.toString());
-                ctx.drawImage(img, img.getAttribute("data-x"), new_y, 40, 40);
-            }
-        }
-    }
-    requestAnimationFrame(foodMove);
-
-}
-
-function foodAnimate(img){
-    let animate = img.getAttribute("data-current");
-    if(animate === "10"){
-        img.src = "./img/foods/food_"+ 1 +".jpg";
-        img.setAttribute("data-current" , "1");
-    }else{
-        animate++;
-        img.src = "./img/foods/food_"+ animate +".jpg";
-        img.setAttribute("data-current" , animate);
-    }
-}
 
 $(document).ready(function(){
     init();
-    foodMove();
 });
 

@@ -37,7 +37,7 @@ button{
 #top_button_area{
     width: 1400px;
     height: 75px;
-    background: antiquewhite no-repeat;
+    background: #bee5eb no-repeat;
     background-size:100% 100%;
     margin-left: 45px;
     position:absolute;
@@ -109,5 +109,13 @@ button{
 }
 .top_item_03 button{
     margin-left: 30px;
+}
+.food_sample{
+    position: absolute;
+    z-index: 240;
+}
+.fish_sample{
+    position: absolute;
+    z-index: 245;
 }
 

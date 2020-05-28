@@ -7,7 +7,9 @@
     <title>Monster Aquarium</title>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/fish.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/food.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/change.js"></script>
 </head>
@@ -57,16 +59,24 @@
 
 
 
-<div class="my_img" style="display: none">
-    <img id="init_pic_01" src="./img/foods/food.png" alt="" data-x="" data-y=""><br>
+<div id="food_buffer" class="food_buffer">
+    <img class="food_sample" id="create_food_00" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
+    <img class="food_sample" id="create_food_01" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
+    <img class="food_sample" id="create_food_02" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
+    <img class="food_sample" id="create_food_03" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
+    <img class="food_sample" id="create_food_04" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
 </div>
 
-<div id="buffer" style="display: none">
-    <img id="create_food_00" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
-    <img id="create_food_01" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
-    <img id="create_food_02" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
-    <img id="create_food_03" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
-    <img id="create_food_04" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">
+<div id="fish_buffer">
+
 </div>
+
+<!--<div id="buffer" style="display: none">-->
+<!--    <img id="create_food_00" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
+<!--    <img id="create_food_01" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
+<!--    <img id="create_food_02" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
+<!--    <img id="create_food_03" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
+<!--    <img id="create_food_04" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
+<!--</div>-->
 </body>
 </html>
