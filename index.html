@@ -5,15 +5,20 @@
     <link rel="stylesheet" href="css/config.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Monster Aquarium</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/change.js"></script>
 </head>
-<body>
+<body onselectstart="return false;">
 <canvas id="my_canvas" width="1400" height="625">你的浏览器不支持 canvas，请升级你的浏览器。</canvas>
 
 
 <!--简单模式-->
 <div class="content-box">
     <div id="top_button_area">
-        <div class="game_title"><span>&nbsp Monster &nbspAquarium</span></div>
+        <div class="game_title"><span >&nbsp Monster &nbspAquarium</span></div>
         <div class="top_item">
             <div class="top_item_01">
                 <button type="button" class="btn btn-primary" name="smallGuppyBtn_" style="background-image: url(img/buttons/smallGuppyBtn_1.jpg)"
@@ -53,12 +58,13 @@
 
 
 <div class="my_img" style="display: none">
-    <img id="init_pic_01" src="./img/foods/food.png" alt=""><br>
-
+    <img id="init_pic_01" src="./img/foods/food.png" alt="" data-x="" data-y=""><br>
 </div>
-<script src="js/change.js"></script>
-<script src="js/init.js"></script>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+<div id="buffer" style="display: none">
+    <img id="create_food_00" src="./img/foods/food.png" alt="" data-use="0">
+    <img id="create_food_01" src="./img/foods/food.png" alt="" data-use="0">
+    <img id="create_food_02" src="./img/foods/food.png" alt="" data-use="0">
+</div>
 </body>
 </html>

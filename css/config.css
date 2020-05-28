@@ -1,5 +1,6 @@
 body{
     position: relative;
+    -moz-user-select: none;
 }
 button{
     outline:none;
