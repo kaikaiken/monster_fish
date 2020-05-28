@@ -116,6 +116,10 @@ button{
 }
 .fish_sample{
     position: absolute;
+    z-index: 250;
+}
+.money_sample{
+    position: absolute;
     z-index: 245;
 }
 

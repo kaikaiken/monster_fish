@@ -1,6 +1,7 @@
 //*canvas参数
 let my_canvas;
 let ctx;
+
 //*小鱼数组参数
 //参数有
 // 鱼的id
@@ -25,6 +26,8 @@ let ctx;
 //  Guppy_to_x;
 // //鱼前往的y方向
 //  Guppy_to_y;
+// //鱼的食物目标
+//  Guppy_target_food
 let fishes = [];
 //场上有的鱼数量
 let fish_current_num;
@@ -38,8 +41,24 @@ let fish_drop_speed;
 const food_speed = 1;
 //食物的营养度
 let food_growth;
+//食物花费
+const food_cost= 5;
 // 食物等级
 let food_level;
+//目前食物数量
+let food_number;
+
+//*金钱参数
+const silver_coin_cost = 40;
+const gold_coin_cost = 85;
+const pearl_cost = 250;
+//硬币总数量
+let coin_total_num;
+//硬币掉落速度
+let coin_drop_speed;
+//硬币生产时间
+let coin_create_time;
+
 
 function init() {
     //canvas初始化
@@ -56,7 +75,14 @@ function init() {
 
     // 食物初始化参数
     food_level = 1;
-    food_growth = 20;
+    food_growth = 80;
+    food_number = 0;
+
+    //硬币初始化参数
+    //硬币总数量
+    coin_total_num = 0;
+    coin_drop_speed = 2;
+    coin_create_time = 18000;
 
 }
 

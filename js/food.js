@@ -22,7 +22,9 @@ function createFood(x , y) {
     for(let i=0;i < food_level;i++){
         let food_img = document.getElementById("create_food_0" + i);
         if(food_img.getAttribute("data-use") === "0"){
+            food_number++;
             food_img.setAttribute("data-use" , "1");
+            food_img.style.display = "";
             food_img.style.top = y+"px";
             food_img.style.left = x+"px";
             break;
@@ -37,7 +39,7 @@ function createFood(x , y) {
 
 }
 
-//食物移动和销毁
+//食物移动
 function foodMove() {
     // for(let i = 0 ; i < food_number ; i ++){
     //     let img = document.getElementById("create_food_" + i);
@@ -76,7 +78,9 @@ function foodMove() {
 function deleteFood(img) {
     img.style.top = "";
     img.style.left = "";
+    food_number--;
     img.setAttribute("data-use" , "0");
+    img.style.display = "none";
 }
 
 //食物下落动画
