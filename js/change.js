@@ -21,8 +21,8 @@ function change_mouse_up(btn , type) {
         }
         btn.style.backgroundImage="url("+ "./img/buttons/" + btn.getAttribute("name") + "1.jpg)";
     }else{
-        // addFish();
-        addTestFish()
+        addFish();
+        // addTestFish();
         btn.style.backgroundImage="url("+ "./img/buttons/" + btn.getAttribute("name") + "1.jpg)";
     }
 

@@ -9,11 +9,17 @@ let ctx;
 //  Guppy_type;
 // //鱼的血量
 //  Guppy_health;
+// //鱼的饥饿度（100 掉饥饿度速度分别为10,12,15/5s）
+//  Guppy_hunger;
+// //鱼掉饥饿度幅度10,12,15/5s
+//  Guppy_hunger_rate;
+// //鱼的成长值（0 , 80 , 200）
+//  Guppy_growth;
 // //鱼的状态，1为正常，2为饥饿，3为死亡,4为消失
 //  Guppy_state;
 // //鱼的方向，0为左，9为右
 //  Guppy_direct;
-// //鱼是否需要移动
+// //鱼是否需要移动,0为等待，1为正在移动，2为准备寻食，3为正在寻食
 //  Guppy_move;
 // //鱼前往的x方向
 //  Guppy_to_x;
@@ -30,6 +36,8 @@ let fish_drop_speed;
 //*食物参数
 //食物下落速度
 const food_speed = 1;
+//食物的营养度
+let food_growth;
 // 食物等级
 let food_level;
 
@@ -48,6 +56,7 @@ function init() {
 
     // 食物初始化参数
     food_level = 1;
+    food_growth = 20;
 
 }
 
