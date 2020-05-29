@@ -93,6 +93,7 @@ function BeEaten(fish_ID) {
         blood.style.left = new_x + "px";
         blood.style.top =  new_y + "px";
         document.getElementById("fish_buffer").removeChild(fish);
+        checkGame();
         let time_delete = setInterval ( function ( ) {
             blood.style.display = "none";
             clearInterval(time_delete);
@@ -199,6 +200,7 @@ function deadFish(img) {
         }
         if(i === 10){
             document.getElementById("fish_buffer").removeChild(img);
+            checkGame();
             clearInterval(time_delete);
         }
     },  50 );
@@ -265,7 +267,7 @@ function swimFish() {
         let img = imgS.item(i);
         if(getMoveFish(img.id) === 1 || getMoveFish(img.id) === 2){
             let fish_id =getIDFish(img.id);
-            let fish_speed = 2 *  fishes[i].Guppy_state;
+            let fish_speed = fishes[i].Guppy_state;
             let x = fishes[i].Guppy_to_x-img.style.left.slice(0,-2);
             let y = fishes[i].Guppy_to_y-img.style.top.slice(0,-2);
             let new_x = parseInt(img.style.left.slice(0,-2),10);
@@ -296,7 +298,7 @@ function swimFish() {
                     new_y = new_y -fish_speed;
                 }
             }
-            if(x === 0 && y === 0){
+            if(x < 2 && x > -2 && y<=0 && y > -2){
                 if(getMoveFish(img.id) === 1){
                     fishes[fish_id].Guppy_move = 0 ;
                 }else if(getMoveFish(img.id) === 2 &&  fishes[fish_id].Guppy_target_food > -1){

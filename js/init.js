@@ -71,6 +71,8 @@ const buy_Guppy_cost = 100;
 const buy_Egg_cost = 1000;
 //升级饲料
 const update_Food_cost = 300;
+//玩家攻击数值
+const player_attack = 3;
 
 //*按键参数
 //买鱼按键
@@ -94,6 +96,8 @@ let game_buy_Egg_button;
 // //怪物抗击退
 //  Monster_fight_back;
 let monsters = [];
+//记录场上怪物数目;
+let monster_number;
 
 function init() {
     //canvas初始化
@@ -106,7 +110,7 @@ function init() {
     fish_current_num = 0;
     fish_total_num = 0;
     fish_drop_speed = 6;
-    // addFish();
+    addFish();
 
     // 食物初始化参数
     food_level = 1;
@@ -137,13 +141,17 @@ function init() {
     //怪物初始化
     monsters.push(
         {
-            Monster_health: 50,
-            Monster_attack: 5,
-            Monster_speed:  1,
-            Monster_attack_speed: 0.3,
+            Monster_health: 60,
+            Monster_speed:  2,
             Monster_fight_back: 1
         },
     )
+    monster_number = 0;
+
+    let monster_out = setInterval ( function ( ) {
+            createMonster(1);
+            clearInterval(monster_out);
+    },  6000 );
 }
 
 function draw(){

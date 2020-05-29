@@ -1,3 +1,5 @@
+//怪物边界 25  1295 585  70
+
 function createMonster(type) {
     let monster = document.getElementsByClassName("monster_sample");
     for(let i=0;i < monster.length;i++){
@@ -7,8 +9,12 @@ function createMonster(type) {
             let random_y = Math.round(Math.random()*500);
             mon.style.display = "";
             mon.setAttribute("data-use","1");
+            monster_number++;
             mon.style.left = (25 + random_x).toString() +"px";
             mon.style.top = (50 + random_y).toString()+ "px";
+            mon.setAttribute("data-health", monsters[type-1].Monster_health);
+            mon.setAttribute("data-direct", "0");
+            document.getElementById("top_warning").style.backgroundColor = "red";
             break;
         }
     }
@@ -139,11 +145,28 @@ function monsterAnimate(img){
     }
 }
 
-
+//怪物死亡
+function deadMonster(mon){
+    mon.setAttribute("data-use","2")
+    let monster_opacity = 1.0;
+    let monster_dead = setInterval ( function ( ) {
+        mon.style.opacity = monster_opacity.toString();
+        monster_opacity = monster_opacity - 0.1;
+        if(mon.style.opacity === "0.1"){
+            mon.setAttribute("data-use","0");
+            mon.style.display = "none";
+            monster_number--;
+            if(monster_number === 0){
+                document.getElementById("top_warning").style.backgroundColor = "green";
+            }
+            clearInterval(monster_dead);
+        }
+    },  100 );
+}
 
 $(document).ready(function(){
-    // createMonster(1);
-    swimMonster();
+    createMonster(1);
+    // swimMonster();
     let getFoodMonster = setInterval(searchFish, 500);
 });
 
