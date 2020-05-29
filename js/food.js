@@ -22,6 +22,7 @@ function createFood(x , y) {
     for(let i=0;i < food_level;i++){
         let food_img = document.getElementById("create_food_0" + i);
         if(food_img.getAttribute("data-use") === "0"){
+            costMoney(buy_Food_cost);
             food_number++;
             food_img.setAttribute("data-use" , "1");
             food_img.style.display = "";

@@ -122,4 +122,12 @@ button{
     position: absolute;
     z-index: 260;
 }
+.monster_sample{
+    position: absolute;
+    z-index: 265;
+}
+.blood_sample{
+    position: absolute;
+    z-index: 270;
+}
 

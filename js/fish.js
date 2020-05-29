@@ -17,12 +17,13 @@ function addFish() {
             Guppy_move: 0,
             Guppy_to_y: img.style.left.toString(),
             Guppy_to_x: "132px",
-            Guppy_hunger: 80,
+            Guppy_hunger: 70,
             Guppy_growth: 0,
-            Guppy_hunger_rate: 10,
+            Guppy_hunger_rate: 9,
             Guppy_target_food: -1}
     );
     dropFish(fish_total_num);
+    let imgS = document.getElementsByClassName("food_sample");
     //管理饥饿度
     let time_stop = setInterval ( function ( ) {
         let fish_id = getIDFish(img.id);
@@ -32,7 +33,7 @@ function addFish() {
                 fishes[fish_id].Guppy_state = 3;
                 deadFish(img);
                 clearInterval(time_stop);
-            }else if(fishes[fish_id].Guppy_hunger <= 50){
+            }else if(fishes[fish_id].Guppy_hunger <= 45){
                 //饥饿状态
                 if(fishes[fish_id].Guppy_state !== 2){
                     fishes[fish_id].Guppy_state = 2;
@@ -52,12 +53,52 @@ function addFish() {
             let type = fishes[fish_id].Guppy_type;
             createCoin(x , y , direct ,type-1)
         }
-    },  18000 );
+    },  16500 );
+    //随机吃食物
+    let eat_food = setInterval ( function ( ) {
+        let fish_id = getIDFish(img.id);
+        if(fishes[fish_id].Guppy_state === 1 && fishes[fish_id].Guppy_hunger <= 90 && fishes[fish_id].Guppy_hunger > 70){
+            let x = img.style.left.slice(0,-2);
+            let y = img.style.top.slice(0,-2);
+            for( let i=0;i<imgS.length;i++){
+                if(imgS.item(i).getAttribute("data-use") === "1"){
+                    let food = imgS.item(i);
+                    let near_x = food.style.left.slice(0,-2);
+                    let near_y = food.style.top.slice(0,-2);
+                    if(fishes[fish_id].Guppy_direct === 1){
+                        near_x =near_x -40;
+                    }
+                    let x_D_value = parseInt(near_x,10) - x;
+                    let y_D_value = parseInt(near_y,10) - y;
+                    if( x_D_value < 10 && y_D_value > -10 && x_D_value > -10 && y_D_value < 10){
+                        eatFood(img,fish_id,food);
+                    }
+                }
+            }
+        }
+    },  200 );
     fish_total_num++;
     fish_current_num++;
 }
 
-
+//鱼被吃掉
+function BeEaten(fish_ID) {
+    let fish_id = getIDFish(fish_ID);
+    if(fishes[fish_id].Guppy_state < 3){
+        fishes[fish_id].Guppy_state = 4;
+        let fish = document.getElementById(fish_ID);
+        let blood = document.getElementById("blood_sample");
+        let new_x =  parseInt(fish.style.left.slice(0,-2) , 10) + 15;
+        let new_y =  parseInt(fish.style.top.slice(0,-2) , 10) + 15;
+        blood.style.left = new_x + "px";
+        blood.style.top =  new_y + "px";
+        document.getElementById("fish_buffer").removeChild(fish);
+        let time_delete = setInterval ( function ( ) {
+            blood.style.display = "none";
+            clearInterval(time_delete);
+        },  750 );
+    }
+}
 
 
 //鱼吃食物和长大
@@ -74,7 +115,7 @@ function eatFood(fish , fish_id ,food) {
         fishes[fish_id].Guppy_type = 2;
         temp = 2;
     }
-    if(fishes[fish_id].Guppy_type === 2&& fishes[fish_id].Guppy_growth>=200){
+    if(fishes[fish_id].Guppy_type === 2&& fishes[fish_id].Guppy_growth>=300){
         fishes[fish_id].Guppy_type = 3;
         temp = 3;
     }
@@ -135,19 +176,19 @@ function searchFood() {
     let imgS = document.getElementsByClassName("fish_sample");
     for( let i=0;i<imgS.length;i++){
         let img = imgS.item(i);
-        if(getStateFish(img.id) === 2){
-            let fish_id =getIDFish(img.id);
+        let fish_id =getIDFish(img.id);
+        if(fishes[fish_id].Guppy_state === 2 || (fishes[fish_id].Guppy_state === 1 && fishes[fish_id].Guppy_hunger <= 70)){
             fishes[fish_id].Guppy_move = 2;
             findFood(img);
         }
     }
 }
 
-//鱼死亡动画
+//鱼饿死死亡动画
 function deadFish(img) {
     let i = 1;
     let fish_id = getIDFish(img.id);
-    let time_delete = setInterval ( function ( ) {
+    let time_delete = setInterval ( function () {
         if(i < 9){
             img.src = "./img/fish/smallGuppy/smallGuppy_"+  fishes[fish_id].Guppy_type +"3"+ i +".jpg";
             i++;
@@ -216,14 +257,15 @@ function moveFish() {
         }
     }
 }
+
 //鱼移动
 function swimFish() {
     let imgS = document.getElementsByClassName("fish_sample");
     for( let i=0;i<imgS.length;i++){
         let img = imgS.item(i);
         if(getMoveFish(img.id) === 1 || getMoveFish(img.id) === 2){
-            let fish_speed = 2 * getMoveFish(img.id);
             let fish_id =getIDFish(img.id);
+            let fish_speed = 2 *  fishes[i].Guppy_state;
             let x = fishes[i].Guppy_to_x-img.style.left.slice(0,-2);
             let y = fishes[i].Guppy_to_y-img.style.top.slice(0,-2);
             let new_x = parseInt(img.style.left.slice(0,-2),10);

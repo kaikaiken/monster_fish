@@ -42,15 +42,18 @@ const food_speed = 1;
 //食物的营养度
 let food_growth;
 //食物花费
-const food_cost= 5;
+const buy_Food_cost= 5;
 // 食物等级
 let food_level;
 //目前食物数量
 let food_number;
 
 //*金钱参数
+//银币价值
 const silver_coin_cost = 40;
+//金币价值
 const gold_coin_cost = 85;
+//珍珠价值
 const pearl_cost = 250;
 //硬币总数量
 let coin_total_num;
@@ -59,6 +62,38 @@ let coin_drop_speed;
 //硬币生产时间
 let coin_create_time;
 
+//*游戏花费参数
+//玩家金钱
+let player_money;
+//购买Guppy的花费
+const buy_Guppy_cost = 100;
+//购买蛋的花费
+const buy_Egg_cost = 1000;
+//升级饲料
+const update_Food_cost = 300;
+
+//*按键参数
+//买鱼按键
+let game_buy_Guppy_button;
+//升级食物按键
+let game_update_Food_button;
+//升级蛋按键
+let game_buy_Egg_button;
+
+//*怪物参数
+//怪物数组(预估有3种怪物)
+//参数有
+// //怪物的血量
+//  Monster_health;
+// //怪物攻击力
+//  Monster_attack;
+// //怪物速度
+//  Monster_speed;
+// //怪物攻击速度
+//  Monster_attack_speed;
+// //怪物抗击退
+//  Monster_fight_back;
+let monsters = [];
 
 function init() {
     //canvas初始化
@@ -71,11 +106,11 @@ function init() {
     fish_current_num = 0;
     fish_total_num = 0;
     fish_drop_speed = 6;
-    addFish();
+    // addFish();
 
     // 食物初始化参数
     food_level = 1;
-    food_growth = 80;
+    food_growth = 20;
     food_number = 0;
 
     //硬币初始化参数
@@ -84,6 +119,31 @@ function init() {
     coin_drop_speed = 1;
     coin_create_time = 18000;
 
+    //玩家参数初始化
+    player_money = document.getElementById("player_money");
+    player_money.value = 150;
+
+    //按键初始化
+    game_buy_Guppy_button = document.getElementById("game_buy_Guppy_button");
+    game_buy_Guppy_button.disable = false;
+    game_buy_Guppy_button.style.backgroundImage="url("+ "./img/buttons/" + game_buy_Guppy_button.getAttribute("name") + "1.jpg)";
+    game_update_Food_button = document.getElementById("game_update_Food_button");
+    game_update_Food_button.disable = true;
+    game_update_Food_button.style.backgroundImage="url("+ "./img/buttons/" + game_update_Food_button.getAttribute("name") + "2.jpg)";
+    game_buy_Egg_button = document.getElementById("game_buy_Egg_button");
+    game_buy_Egg_button.disable = true;
+    game_buy_Egg_button.style.backgroundImage="url("+ "./img/buttons/" + game_buy_Egg_button.getAttribute("name") + "2.jpg)";
+
+    //怪物初始化
+    monsters.push(
+        {
+            Monster_health: 50,
+            Monster_attack: 5,
+            Monster_speed:  1,
+            Monster_attack_speed: 0.3,
+            Monster_fight_back: 1
+        },
+    )
 }
 
 function draw(){

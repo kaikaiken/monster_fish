@@ -62,6 +62,12 @@ function coinAnimate(img){
 }
 
 function collectCoin(coin){
+    let type = coin.getAttribute("data-type");
+    if(type === 1){
+        addMoney(silver_coin_cost);
+    }else{
+        addMoney(gold_coin_cost);
+    }
     deleteCoin(coin);
 }
 

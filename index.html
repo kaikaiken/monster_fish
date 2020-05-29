@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/config.css">
@@ -9,6 +9,8 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/fish.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/monster.js"></script>
     <script src="js/food.js"></script>
     <script src="js/money.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -24,16 +26,16 @@
         <div class="game_title"><span >&nbsp Monster &nbspAquarium</span></div>
         <div class="top_item">
             <div class="top_item_01">
-                <button type="button" class="btn btn-primary" name="smallGuppyBtn_" style="background-image: url(img/buttons/smallGuppyBtn_1.jpg)"
+                <button id="game_buy_Guppy_button" type="button" class="btn btn-primary" name="smallGuppyBtn_" style="background-image: url(img/buttons/smallGuppyBtn_1.jpg)"
                     onmousedown="change_mouse_down(this)" onmouseup="change_mouse_up(this , 0)" onmouseout="change_mouse_out(this)"></button>
             </div>
             <div class="top_item_02">
-                <button  type="button" class="btn btn-primary" name="moreFoodBtn_1" style="background-image: url(img/buttons/moreFoodBtn_11.jpg)"
+                <button id="game_update_Food_button" type="button" class="btn btn-primary" name="moreFoodBtn_1" style="background-image: url(img/buttons/moreFoodBtn_11.jpg)"
                         onmousedown="change_mouse_down(this)" onmouseup="change_mouse_up(this , 1)" onmouseout="change_mouse_out(this)"></button>
             </div>
             <div class="top_item_03">
-                <button  type="button" class="btn btn-primary" name="eggBtn_1" style="background-image: url(img/buttons/eggBtn_11.jpg)"
-                         onmousedown="change_mouse_down(this)" onmouseup="change_mouse_up(this , 2)" onmouseout="change_mouse_out(this)"></button>
+                <button id="game_buy_Egg_button" type="button" class="btn btn-primary" name="eggBtn_1" style="background-image: url(img/buttons/eggBtn_11.jpg)"
+                        onmousedown="change_mouse_down(this)" onmouseup="change_mouse_up(this , 2)" onmouseout="change_mouse_out(this)"></button>
             </div>
         </div>
         <div class="top_menu">
@@ -48,7 +50,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" maxlength="8"  readonly="readonly">
+                    <input id="player_money" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" maxlength="8"  readonly="readonly">
                 </div>
             </div>
         </div>
@@ -76,6 +78,13 @@
 
 </div>
 
+<div id="monster_buffer">
+    <img class="monster_sample" id="create_monster_10" src="./img/monster/monster_10.jpg" alt=""
+         data-use="0" data-type="1" data-direct="0" data-attack="0" style="display: none">
+</div>
+<div id="blood_buffer">
+    <img class="blood_sample" id="blood_sample" src="./img/monster_attack.jpg" alt="" style="display: none">
+</div>
 <!--<div id="buffer" style="display: none">-->
 <!--    <img id="create_food_00" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
 <!--    <img id="create_food_01" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
