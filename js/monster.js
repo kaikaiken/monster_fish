@@ -7,6 +7,7 @@ function createMonster(type) {
         if( mon.getAttribute("data-type").toString()=== type.toString() && mon.getAttribute("data-use") === "0" ){
             let random_x = Math.round(Math.random()*1300);
             let random_y = Math.round(Math.random()*500);
+            mon.style.opacity = "1";
             mon.style.display = "";
             mon.setAttribute("data-use","1");
             monster_number++;
@@ -110,12 +111,11 @@ function swimMonster() {
                     new_y = new_y -monster_speed;
                 }
             }
-            if(x === 0 && y === 0){
+            if(x < 1 && x > -1 && y< 1 && y > -1){
                 if(img.getAttribute("data-attack") === "0"){
                     eatFish(img);
                 }
             }
-
             if(x > 0 && img.getAttribute("data-direct") === "0"){
                 monsterAnimate(img);
                 img.setAttribute("data-direct","1");

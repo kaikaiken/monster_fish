@@ -39,20 +39,9 @@ function createFood(x , y) {
 
 
 }
-
+let rate = 1;
 //食物移动
 function foodMove() {
-    // for(let i = 0 ; i < food_number ; i ++){
-    //     let img = document.getElementById("create_food_" + i);
-    //     let temp_y = img.getAttribute("data-y");
-    //     let temp_x = img.getAttribute("data-x");
-    //     let new_y = parseInt(temp_y , 10) + food_speed;
-    //     ctx.clearRect(parseInt(temp_x , 10), parseInt(temp_y , 10) , 40 , 50);
-    //     // img.offsetTop = img.offsetTop+ food_speed;
-    //     img.setAttribute("data-y" , new_y.toString());
-    //     ctx.drawImage(img, 0, 0, 40, 50, img.getAttribute("data-x"), new_y, 40, 50);
-    // }
-    // requestAnimationFrame(foodMove);
     for(let i = 0 ; i < food_level ; i ++){
         let img = document.getElementById("create_food_0" + i);
         if(img.getAttribute("data-use") === "1"){
@@ -62,15 +51,10 @@ function foodMove() {
             }else{
                 foodAnimate(img);
                 img.style.top = new_y + "px";
+
             }
         }
     }
-    // let imgS = document.getElementsByClassName("food_sample");
-    // for( let i=0;i<imgS.length;i++){
-    //
-    //     imgS.item(i).style.top = (parseInt(imgS.item(i).style.top.slice(0,-2),10) + food_speed).toString() + "px";
-    // }
-
     requestAnimationFrame(foodMove);
 
 }
