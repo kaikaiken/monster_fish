@@ -21,8 +21,12 @@ function change_mouse_up(btn , type) {
                 EggLevel++;
                 let newName = btn.getAttribute("name").slice(0 , -1) + EggLevel;
                 btn.setAttribute("name" , newName);
+                costMoney(buy_Egg_cost);
             }
-            costMoney(buy_Egg_cost);
+            if(EggLevel === "3" ){
+                alert("游戏胜利")
+            }
+
         }else{
             addFish();
             costMoney(buy_Guppy_cost);

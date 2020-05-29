@@ -150,8 +150,7 @@ function init() {
 
     let monster_out = setInterval ( function ( ) {
             createMonster(1);
-            clearInterval(monster_out);
-    },  6000 );
+    },  60000 );
 }
 
 function draw(){

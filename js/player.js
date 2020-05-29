@@ -59,6 +59,7 @@ function attack(mon) {
     let attack = parseInt(health,10) - player_attack;
     if(attack <= 0){
         deadMonster(mon);
+        addMoney(100);
     }else{
         mon.setAttribute("data-health", attack);
     }

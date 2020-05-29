@@ -165,8 +165,8 @@ function deadMonster(mon){
 }
 
 $(document).ready(function(){
-    createMonster(1);
-    // swimMonster();
+    // createMonster(1);
+    swimMonster();
     let getFoodMonster = setInterval(searchFish, 500);
 });
 
