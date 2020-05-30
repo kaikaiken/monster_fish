@@ -38,8 +38,6 @@ function coinMove() {
             }
         }
     }
-
-
     requestAnimationFrame(coinMove);
 }
 //删除硬币

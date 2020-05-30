@@ -1,8 +1,10 @@
 //鼠标点击加食物
 $(document).ready(function(){
     $("#my_canvas").click(function(e){
-        if(e.pageY <= 620 && e.pageX >= 45 && e.pageX<=1425){
-            createFood(e.pageX-12 ,e.pageY-12);
+        if(game_start_flag === 1){
+            if(e.pageY <= 620 && e.pageX >= 45 && e.pageX<=1425){
+                createFood(e.pageX-12 ,e.pageY-12);
+            }
         }
     })
 });

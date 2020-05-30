@@ -11,6 +11,7 @@
     <script src="js/init.js"></script>
     <script src="js/player.js"></script>
     <script src="js/monster.js"></script>
+    <script src="js/pet.js"></script>
     <script src="js/food.js"></script>
     <script src="js/money.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -40,7 +41,7 @@
     </div>
 </div>
 
-<!--简单模式-->
+<!--游戏模式-->
 <div class="content-box" id="simple_game">
     <div id="top_button_area">
         <div class="game_title"><span >&nbsp Monster &nbspAquarium</span></div>
@@ -75,7 +76,6 @@
             </div>
         </div>
 
-        <!--        <button type="button" class="btn btn-primary" >原始</button>-->
     </div>
     <div id="game_background"></div>
 </div>
@@ -101,11 +101,16 @@
 <div id="monster_buffer">
     <img class="monster_sample" id="create_monster_10" src="./img/monster/monster_10.jpg" alt=""
          data-use="0" data-type="1" data-direct="0" data-attack="0" style="display: none" draggable="false">
+    <img class="monster_sample" id="create_monster_20" src="./img/monster/monster_20.jpg" alt=""
+         data-use="0" data-type="2" data-direct="0" data-attack="0"  style="display: none" draggable="false">
 </div>
 <div id="blood_buffer">
     <img class="blood_sample" id="blood_sample" src="./img/monster_attack.jpg" alt="" style="display: none">
 </div>
-
+<div id="pet_buffer">
+    <img class="pet_sample" id="create_pet_10" src="./img/pets/pet_10.jpg" alt=""
+         data-type="1" data-direct="0"  style="left:635px;top:497px;display: none" draggable="false">
+</div>
 
 </body>
 </html>

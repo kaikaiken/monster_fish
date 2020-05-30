@@ -5,6 +5,8 @@ let ctx;
 //*游戏参数
 //游戏开始参数
 let game_start_flag;
+//游戏类型 1为简单 2为难
+let game_mod;
 
 
 //*小鱼数组参数
@@ -55,11 +57,11 @@ let food_number;
 
 //*金钱参数
 //银币价值
-const silver_coin_cost = 40;
+const silver_coin_cost = 35;
 //金币价值
-const gold_coin_cost = 85;
+const gold_coin_cost = 80;
 //珍珠价值
-const pearl_cost = 250;
+const pearl_cost = 200;
 //硬币总数量
 let coin_total_num;
 //硬币掉落速度
@@ -150,7 +152,7 @@ function game_over() {
 
 }
 
-function game_init() {
+function game_init(game_type) {
     //canvas初始化
     my_canvas = document.getElementById('my_canvas');
     if(!my_canvas.getContext) return;
@@ -159,6 +161,10 @@ function game_init() {
 
     //游戏初始化
     game_start_flag = 1;
+    game_mod = game_type;
+
+    //场景初始化
+    document.getElementById("game_background").style.backgroundImage = 'url("./img/level/aquarium'+ game_mod +'.png")';
 
     //小鱼初始化
     fish_current_num = 0;
@@ -204,17 +210,35 @@ function game_init() {
             Monster_speed:  2,
             Monster_fight_back: 0.7
         },
+        {
+            Monster_health: 95,
+            Monster_speed:  3,
+            Monster_fight_back: 0.5
+        },
     )
     monster_number = 0;
 
-    monster_out = setInterval ( function ( ) {
-        if(game_start_flag === 0){
-            clearInterval(monster_out);
-        }else{
-            createMonster(1);
-        }
-    },  60000 );
+    if(game_mod === 1){
+        monster_out = setInterval ( function ( ) {
+            if(game_start_flag === 0){
+                clearInterval(monster_out);
+            }else{
+                createMonster(1);
+            }
+        },  60000 );
+    }else if(game_mod === 2){
+        monster_out = setInterval ( function ( ) {
+            if(game_start_flag === 0){
+                clearInterval(monster_out);
+            }else{
+                createMonster(2);
+            }
+        },  55000 );
+    }
     monster_game();
+
+    //宠物初始化
+    createPet(1);
 }
 
 $(document).ready(function(){

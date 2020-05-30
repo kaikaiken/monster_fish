@@ -19,7 +19,7 @@ function  addMoney(number) {
 
 //点击攻击
 $(document).ready(function(){
-    $("#create_monster_10").click(function(e){
+    $("#create_monster_10 , #create_monster_20").click(function(e){
         let id = $(this).attr("id");
         let monster = document.getElementById(id);
         attack(monster);

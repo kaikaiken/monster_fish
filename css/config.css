@@ -26,7 +26,7 @@ button{
     /*border-top: none;*/
 }
 #game_background{
-    background: url(../img/level/aquarium1.png) no-repeat;
+    background-repeat: no-repeat;
     background-size:100% 100%;
     margin-left: 45px;
     padding: 10px;
@@ -194,5 +194,9 @@ button{
 #lose_windows{
     width: 400px;
     height: 566px;
+}
+.pet_sample{
+    position: absolute;
+    z-index: 275;
 }
 
