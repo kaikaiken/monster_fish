@@ -30,19 +30,21 @@ function addFish() {
             clearInterval(time_stop);
         }else{
             let fish_id = getIDFish(img.id);
-            if(fishes[fish_id].Guppy_state < 3){
-                fishes[fish_id].Guppy_hunger = fishes[fish_id].Guppy_hunger - fishes[fish_id].Guppy_hunger_rate;
-                if(fishes[fish_id].Guppy_hunger <= 0){
-                    fishes[fish_id].Guppy_state = 3;
-                    deadFish(img);
-                    clearInterval(time_stop);
-                }else if(fishes[fish_id].Guppy_hunger <= 45){
-                    //饥饿状态
-                    if(fishes[fish_id].Guppy_state !== 2){
-                        fishes[fish_id].Guppy_state = 2;
-                        img.src = "./img/fish/smallGuppy/smallGuppy_"+ fishes[fish_id].Guppy_type +"20.jpg";
-                    }
+            if(fish_id !== -1){
+                if( fishes[fish_id].Guppy_state < 3){
+                    fishes[fish_id].Guppy_hunger = fishes[fish_id].Guppy_hunger - fishes[fish_id].Guppy_hunger_rate;
+                    if(fishes[fish_id].Guppy_hunger <= 0){
+                        fishes[fish_id].Guppy_state = 3;
+                        deadFish(img);
+                        clearInterval(time_stop);
+                    }else if(fishes[fish_id].Guppy_hunger <= 45){
+                        //饥饿状态
+                        if( fishes[fish_id].Guppy_state !== 2){
+                            fishes[fish_id].Guppy_state = 2;
+                            img.src = "./img/fish/smallGuppy/smallGuppy_"+ fishes[fish_id].Guppy_type +"20.jpg";
+                        }
 
+                    }
                 }
             }
         }
@@ -53,14 +55,16 @@ function addFish() {
             clearInterval(create_food);
         }else{
             let fish_id = getIDFish(img.id);
-            if(fishes[fish_id].Guppy_state < 3 && fishes[fish_id].Guppy_type > 1){
-                let x = img.style.left.slice(0,-2);
-                let y = img.style.top.slice(0,-2);
-                let direct = fishes[fish_id].Guppy_direct;
-                let type = fishes[fish_id].Guppy_type;
-                createCoin(x , y , direct ,type-1);
-            }else if(fishes[fish_id].Guppy_state > 2){
-                clearInterval(create_food);
+            if(fish_id !== -1){
+                if( fishes[fish_id].Guppy_state < 3 && fishes[fish_id].Guppy_type > 1){
+                    let x = img.style.left.slice(0,-2);
+                    let y = img.style.top.slice(0,-2);
+                    let direct = fishes[fish_id].Guppy_direct;
+                    let type = fishes[fish_id].Guppy_type;
+                    createCoin(x , y , direct ,type-1);
+                }else if(fishes[fish_id].Guppy_state > 2){
+                    clearInterval(create_food);
+                }
             }
         }
     },  16500 );
@@ -70,26 +74,28 @@ function addFish() {
             clearInterval(eat_food);
         }else{
             let fish_id = getIDFish(img.id);
-            if(fishes[fish_id].Guppy_state === 1 && fishes[fish_id].Guppy_hunger <= 90 && fishes[fish_id].Guppy_hunger > 70){
-                let x = img.style.left.slice(0,-2);
-                let y = img.style.top.slice(0,-2);
-                for( let i=0;i<imgS.length;i++){
-                    if(imgS.item(i).getAttribute("data-use") === "1"){
-                        let food = imgS.item(i);
-                        let near_x = food.style.left.slice(0,-2);
-                        let near_y = food.style.top.slice(0,-2);
-                        if(fishes[fish_id].Guppy_direct === 1){
-                            near_x =near_x -40;
-                        }
-                        let x_D_value = parseInt(near_x,10) - x;
-                        let y_D_value = parseInt(near_y,10) - y;
-                        if( x_D_value < 10 && y_D_value > -10 && x_D_value > -10 && y_D_value < 10){
-                            eatFood(img,fish_id,food);
+            if(fish_id !== -1){
+                if( fish_id !== -1 && fishes[fish_id].Guppy_state === 1 && fishes[fish_id].Guppy_hunger <= 90 && fishes[fish_id].Guppy_hunger > 70){
+                    let x = img.style.left.slice(0,-2);
+                    let y = img.style.top.slice(0,-2);
+                    for( let i=0;i<imgS.length;i++){
+                        if(imgS.item(i).getAttribute("data-use") === "1"){
+                            let food = imgS.item(i);
+                            let near_x = food.style.left.slice(0,-2);
+                            let near_y = food.style.top.slice(0,-2);
+                            if(fishes[fish_id].Guppy_direct === 1){
+                                near_x =near_x -40;
+                            }
+                            let x_D_value = parseInt(near_x,10) - x;
+                            let y_D_value = parseInt(near_y,10) - y;
+                            if( x_D_value < 10 && y_D_value > -10 && x_D_value > -10 && y_D_value < 10){
+                                eatFood(img,fish_id,food);
+                            }
                         }
                     }
+                }else if(fishes[fish_id].Guppy_state > 2){
+                    clearInterval(eat_food);
                 }
-            }else if(fishes[fish_id].Guppy_state > 2){
-                clearInterval(eat_food);
             }
         }
     },  200 );

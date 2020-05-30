@@ -121,15 +121,14 @@ function game_over() {
     //画布
 
     //鱼参数清零
-    fishes.length = 0;
     let last_fish = document.getElementsByClassName("fish_sample");
     let last_fish_number = last_fish.length;
     for(let i = 0 ;i<last_fish_number;i++){
         document.getElementById("fish_buffer").removeChild(last_fish.item(0));
     }
     fish_game();
+    fishes.length = 0;
     //怪物参数清零
-    monsters.length = 0;
     let last_monster = document.getElementsByClassName("monster_sample");
     for(let i = 0 ;i<last_monster.length;i++){
         last_monster.item(i).setAttribute("data-use","0");
@@ -137,6 +136,7 @@ function game_over() {
     }
     clearInterval(monster_out);
     monster_game();
+    monsters.length = 0;
     //金币参数清零
     let last_coin = document.getElementsByClassName("money_sample");
     let last_coin_number = last_coin.length;
@@ -149,10 +149,14 @@ function game_over() {
         last_food.item(i).setAttribute("data-use","0");
         last_food.item(i).style.display = "none";
     }
+    //宠物清零
+    document.getElementById("create_pet_10").style.display="none";
+    document.getElementById("create_pet_20").style.display="none";
+    skeleton_game();
 
 }
 
-function game_init(game_type) {
+function game_init(game_type , pet_type) {
     //canvas初始化
     my_canvas = document.getElementById('my_canvas');
     if(!my_canvas.getContext) return;
@@ -211,9 +215,9 @@ function game_init(game_type) {
             Monster_fight_back: 0.7
         },
         {
-            Monster_health: 95,
+            Monster_health: 90,
             Monster_speed:  3,
-            Monster_fight_back: 0.5
+            Monster_fight_back: 0.8
         },
     )
     monster_number = 0;
@@ -238,7 +242,12 @@ function game_init(game_type) {
     monster_game();
 
     //宠物初始化
-    createPet(1);
+    if(pet_type === 1){
+        createPet(1);
+    }else{
+        createPet(2);
+        skeleton_game();
+    }
 }
 
 $(document).ready(function(){

@@ -68,7 +68,7 @@ function collectCoin(coin){
     }else{
         addMoney(gold_coin_cost);
     }
-    deleteCoin(coin);
+    coin.style.display = "none";
 }
 function coin_game(){
     coinMove();

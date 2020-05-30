@@ -32,7 +32,7 @@ function change_mouse_up(btn , type) {
             document.getElementById("simple_game").style.display = "";
             document.getElementById("menu_background").style.display = "none";
             document.getElementById('my_canvas').style.display = "";
-            game_init(2);
+            game_init(2 , 2);
         }else{
             addFish();
             costMoney(buy_Guppy_cost);
