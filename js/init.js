@@ -182,7 +182,7 @@ function game_init() {
 
     //玩家参数初始化
     player_money = document.getElementById("player_money");
-    player_money.value = 3500;
+    player_money.value = 150;
 
 
     //按键初始化

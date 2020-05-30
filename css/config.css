@@ -154,6 +154,7 @@ button{
     text-align: center;
     margin-top: 80px;
     color: var(--clr-primary);
+    cursor: default;
 }
 :root {
     --clr-primary: #dee2e6;
@@ -189,5 +190,9 @@ button{
     height: 42px;
     z-index: 305;
     cursor: pointer;
+}
+#lose_windows{
+    width: 400px;
+    height: 566px;
 }
 

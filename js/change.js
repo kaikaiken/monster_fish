@@ -51,10 +51,13 @@ function change_mouse_out(btn) {
 
 function back_to_menu() {
     game_over();
+    document.getElementById("simple_game").style.display = "none";
+    document.getElementById("menu_background").style.display = "";
+    document.getElementById('my_canvas').style.display = "none";
 }
 
 function window_confirm_down(btn) {
-    document.getElementById(btn.id+"s").src = "./img/window/win_window_"+2+".png";
+    document.getElementById(btn.id+"s").src = "./img/window/"+btn.id +"_"+2+".png";
 }
 function window_confirm_up(btn) {
     document.getElementById(btn.id+"1").style.display = "none";
