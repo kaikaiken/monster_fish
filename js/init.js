@@ -117,14 +117,13 @@ function game_over() {
     //游戏设为没开始
     game_start_flag = 0;
     //画布
-    document.getElementById("simple_game").style.display = "none";
-    document.getElementById("menu_background").style.display = "";
-    document.getElementById('my_canvas').style.display = "none";
+
     //鱼参数清零
     fishes.length = 0;
     let last_fish = document.getElementsByClassName("fish_sample");
-    for(let i = 0 ;i<last_fish.length;i++){
-        document.getElementById("fish_buffer").removeChild(last_fish.item(i));
+    let last_fish_number = last_fish.length;
+    for(let i = 0 ;i<last_fish_number;i++){
+        document.getElementById("fish_buffer").removeChild(last_fish.item(0));
     }
     fish_game();
     //怪物参数清零
@@ -138,8 +137,9 @@ function game_over() {
     monster_game();
     //金币参数清零
     let last_coin = document.getElementsByClassName("money_sample");
-    for(let i = 0 ;i<last_coin.length;i++){
-        document.getElementById("money_buffer").removeChild(last_coin.item(i));
+    let last_coin_number = last_coin.length;
+    for(let i = 0 ;i<last_coin_number;i++){
+        document.getElementById("money_buffer").removeChild(last_coin.item(0));
     }
     //食物参数清零
     let last_food = document.getElementsByClassName("food_sample");
@@ -182,7 +182,7 @@ function game_init() {
 
     //玩家参数初始化
     player_money = document.getElementById("player_money");
-    player_money.value = 150;
+    player_money.value = 3500;
 
 
     //按键初始化

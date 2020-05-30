@@ -24,7 +24,7 @@ function change_mouse_up(btn , type) {
                 costMoney(buy_Egg_cost);
             }
             if(EggLevel === "3" ){
-                alert("游戏胜利")
+                document.getElementById("win_window1").style.display = "";
                 game_over();
             }
 
@@ -52,4 +52,15 @@ function change_mouse_out(btn) {
 function back_to_menu() {
     game_over();
 }
+
+function window_confirm_down(btn) {
+    document.getElementById(btn.id+"s").src = "./img/window/win_window_"+2+".png";
+}
+function window_confirm_up(btn) {
+    document.getElementById(btn.id+"1").style.display = "none";
+    document.getElementById("simple_game").style.display = "none";
+    document.getElementById("menu_background").style.display = "";
+    document.getElementById('my_canvas').style.display = "none";
+}
+
 

@@ -19,6 +19,12 @@
 <body onselectstart="return false;">
 <canvas id="my_canvas" width="1400" height="625">你的浏览器不支持 canvas，请升级你的浏览器。</canvas>
 
+<!--弹出框-->
+<div class="window" id="win_window1" style="display: none">
+    <img id="win_windows" src="./img/window/win_window_1.png" alt="">
+    <div class="window_block" id="win_window" onmousedown="window_confirm_down(this)" onmouseup="window_confirm_up(this)"></div>
+</div>
+
 <!--菜单-->
 <div class="content-box" id="menu_background">
     <h2 class="so-many-shadows">Monster &nbsp Aquarium</h2>
@@ -95,12 +101,5 @@
 </div>
 
 
-<!--<div id="buffer" style="display: none">-->
-<!--    <img id="create_food_00" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
-<!--    <img id="create_food_01" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
-<!--    <img id="create_food_02" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
-<!--    <img id="create_food_03" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
-<!--    <img id="create_food_04" src="./img/foods/food_1.jpg" alt="" data-use="0" data-current="1">-->
-<!--</div>-->
 </body>
 </html>

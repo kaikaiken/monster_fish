@@ -171,4 +171,23 @@ button{
     outline:none;
     border:none;
 }
+.window{
+    position: absolute;
+    left: 520px;
+    top: 50px;
+    z-index: 300;
+}
+#win_windows{
+    width: 400px;
+    height: 566px;
+}
+.window_block{
+    position: absolute;
+    left: 121px;
+    top: 389px;
+    width: 140px;
+    height: 42px;
+    z-index: 305;
+    cursor: pointer;
+}
 
