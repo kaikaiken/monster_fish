@@ -67,7 +67,8 @@ function attack(mon) {
 //检查游戏是否结束
 function checkGame() {
     if(document.getElementsByClassName("fish_sample").length === 0){
-        alert("游戏结束");
+        alert("游戏失败");
+        game_over();
     }
 }
 

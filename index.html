@@ -19,9 +19,17 @@
 <body onselectstart="return false;">
 <canvas id="my_canvas" width="1400" height="625">你的浏览器不支持 canvas，请升级你的浏览器。</canvas>
 
+<!--菜单-->
+<div class="content-box" id="menu_background">
+    <h2 class="so-many-shadows">Monster &nbsp Aquarium</h2>
+    <div style="text-align:center">
+        <button id="start_game_button" type="button" name="startGameBtn_"
+                onmousedown="change_mouse_down(this)" onmouseup="change_mouse_up(this , 3)" onmouseout="change_mouse_out(this)"></button>
+    </div>
+</div>
 
 <!--简单模式-->
-<div class="content-box">
+<div class="content-box" id="simple_game">
     <div id="top_button_area">
         <div class="game_title"><span >&nbsp Monster &nbspAquarium</span></div>
         <div class="top_item">
@@ -39,7 +47,7 @@
             </div>
         </div>
         <div class="top_menu">
-            <button id="top_menu_01" type="button" class="btn btn-primary" style="background-color: indianred">返回菜单</button>
+            <button id="top_menu_01" type="button" class="btn btn-primary" style="background-color: indianred" onclick="back_to_menu()">返回菜单</button>
         </div>
         <div class="top_information">
             <div class="top_inform">

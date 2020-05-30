@@ -4,21 +4,11 @@ $(document).ready(function(){
         if(e.pageY <= 620 && e.pageX >= 45 && e.pageX<=1425){
             createFood(e.pageX-12 ,e.pageY-12);
         }
-
     })
 });
 
 //创建食物
 function createFood(x , y) {
-    // $("#buffer").append('<img id="create_food_' + food_number +'" src="./img/foods/food.png">')
-    // let food_img = document.getElementById("create_food_" + food_number);
-    // ctx.drawImage(food_img, 0, 0, 40, 50, x, y, 40, 50);
-    // food_number++;
-    // food_img.setAttribute("data-x" , x);
-    // food_img.setAttribute("data-y" , y);
-    // food_img.onload = function(){
-    //     foodMove();
-    //  }
     for(let i=0;i < food_level;i++){
         let food_img = document.getElementById("create_food_0" + i);
         if(food_img.getAttribute("data-use") === "0"){
@@ -32,14 +22,8 @@ function createFood(x , y) {
         }
     }
 
-    // $("#food_buffer").append('<img class="food_sample" id="init_pic_01" src="./img/foods/food_1.jpg" style="left:'+x+'px;top:'+y+'px" >');
-    //
-    // alert( document.getElementById("init_pic_01").style.top);
-    // let img=document.getElementById("init_pic_01");
-
-
 }
-let rate = 1;
+
 //食物移动
 function foodMove() {
     for(let i = 0 ; i < food_level ; i ++){
@@ -55,8 +39,9 @@ function foodMove() {
             }
         }
     }
-    requestAnimationFrame(foodMove);
-
+    if(game_start_flag === 1){
+        requestAnimationFrame(foodMove);
+    }
 }
 
 //销毁食物
@@ -81,6 +66,8 @@ function foodAnimate(img){
     }
 }
 
-$(document).ready(function(){
+function food_game(){
     foodMove();
-});
+}
+
+

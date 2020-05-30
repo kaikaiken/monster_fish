@@ -26,7 +26,16 @@ button{
     /*border-top: none;*/
 }
 #game_background{
-    background: url(../img/background.png) no-repeat;
+    background: url(../img/level/aquarium1.png) no-repeat;
+    background-size:100% 100%;
+    margin-left: 45px;
+    padding: 10px;
+    width: 1400px;
+    height: 700px;
+    border-radius: 4px;
+}
+#menu_background{
+    background: url(../img/background.jpg) no-repeat;
     background-size:100% 100%;
     margin-left: 45px;
     padding: 10px;
@@ -129,5 +138,37 @@ button{
 .blood_sample{
     position: absolute;
     z-index: 270;
+}
+.so-many-shadows {
+    text-shadow:
+            3px 3px 0 yellow,
+            6px 6px 0 blue,
+            9px 9px red,
+            12px 12px 0 black;
+
+
+    font-family: var(--ff-title);
+    font-weight: var(--fw-title);
+    text-transform: uppercase;
+    font-size: calc(2rem + 5vw);
+    text-align: center;
+    margin-top: 80px;
+    color: var(--clr-primary);
+}
+:root {
+    --clr-primary: #dee2e6;
+    --ff-title: bungee, sans-serif;
+    --fw-title: 400;
+}
+#start_game_button{
+    background: url(../img/buttons/startGameBtn_1.jpg) no-repeat;
+    background-size:100% 100%;
+    margin-top: 200px;
+    padding: 10px;
+    width: 200px;
+    height: 68px;
+    border-radius: 4px;
+    outline:none;
+    border:none;
 }
 

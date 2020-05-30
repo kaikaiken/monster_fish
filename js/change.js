@@ -25,8 +25,14 @@ function change_mouse_up(btn , type) {
             }
             if(EggLevel === "3" ){
                 alert("游戏胜利")
+                game_over();
             }
 
+        }else if(type === 3){
+            document.getElementById("simple_game").style.display = "";
+            document.getElementById("menu_background").style.display = "none";
+            document.getElementById('my_canvas').style.display = "";
+            game_init();
         }else{
             addFish();
             costMoney(buy_Guppy_cost);
@@ -41,5 +47,9 @@ function change_mouse_out(btn) {
     if(!btn.disable){
         btn.style.backgroundImage="url("+ "./img/buttons/" + btn.getAttribute("name") + "1.jpg)";
     }
+}
+
+function back_to_menu() {
+    game_over();
 }
 

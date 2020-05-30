@@ -2,6 +2,11 @@
 let my_canvas;
 let ctx;
 
+//*游戏参数
+//游戏开始参数
+let game_start_flag;
+
+
 //*小鱼数组参数
 //参数有
 // 鱼的id
@@ -98,34 +103,87 @@ let game_buy_Egg_button;
 let monsters = [];
 //记录场上怪物数目;
 let monster_number;
+//怪物事件
+let monster_out;
 
 function init() {
+    document.getElementById("simple_game").style.display = "none";
+    document.getElementById("menu_background").style.display = "";
+    document.getElementById('my_canvas').style.display = "none";
+    game_start_flag = 0;
+}
+
+function game_over() {
+    //游戏设为没开始
+    game_start_flag = 0;
+    //画布
+    document.getElementById("simple_game").style.display = "none";
+    document.getElementById("menu_background").style.display = "";
+    document.getElementById('my_canvas').style.display = "none";
+    //鱼参数清零
+    fishes.length = 0;
+    let last_fish = document.getElementsByClassName("fish_sample");
+    for(let i = 0 ;i<last_fish.length;i++){
+        document.getElementById("fish_buffer").removeChild(last_fish.item(i));
+    }
+    fish_game();
+    //怪物参数清零
+    monsters.length = 0;
+    let last_monster = document.getElementsByClassName("monster_sample");
+    for(let i = 0 ;i<last_monster.length;i++){
+        last_monster.item(i).setAttribute("data-use","0");
+        last_monster.item(i).style.display = "none";
+    }
+    clearInterval(monster_out);
+    monster_game();
+    //金币参数清零
+    let last_coin = document.getElementsByClassName("money_sample");
+    for(let i = 0 ;i<last_coin.length;i++){
+        document.getElementById("money_buffer").removeChild(last_coin.item(i));
+    }
+    //食物参数清零
+    let last_food = document.getElementsByClassName("food_sample");
+    for(let i = 0 ;i<last_food.length;i++){
+        last_food.item(i).setAttribute("data-use","0");
+        last_food.item(i).style.display = "none";
+    }
+
+}
+
+function game_init() {
     //canvas初始化
     my_canvas = document.getElementById('my_canvas');
     if(!my_canvas.getContext) return;
     ctx = my_canvas.getContext("2d");
     ctx.globalCompositeOperation = "lighten";
 
+    //游戏初始化
+    game_start_flag = 1;
+
     //小鱼初始化
     fish_current_num = 0;
     fish_total_num = 0;
     fish_drop_speed = 6;
     addFish();
+    fish_game();
 
     // 食物初始化参数
     food_level = 1;
     food_growth = 20;
     food_number = 0;
+    food_game();
 
     //硬币初始化参数
     //硬币总数量
     coin_total_num = 0;
     coin_drop_speed = 1;
     coin_create_time = 18000;
+    coin_game();
 
     //玩家参数初始化
     player_money = document.getElementById("player_money");
     player_money.value = 150;
+
 
     //按键初始化
     game_buy_Guppy_button = document.getElementById("game_buy_Guppy_button");
@@ -137,42 +195,27 @@ function init() {
     game_buy_Egg_button = document.getElementById("game_buy_Egg_button");
     game_buy_Egg_button.disable = true;
     game_buy_Egg_button.style.backgroundImage="url("+ "./img/buttons/" + game_buy_Egg_button.getAttribute("name") + "2.jpg)";
+    document.getElementById("top_warning").style.backgroundColor = "green";
 
     //怪物初始化
     monsters.push(
         {
             Monster_health: 60,
             Monster_speed:  2,
-            Monster_fight_back: 1
+            Monster_fight_back: 0.7
         },
     )
     monster_number = 0;
 
-    let monster_out = setInterval ( function ( ) {
+    monster_out = setInterval ( function ( ) {
+        if(game_start_flag === 0){
+            clearInterval(monster_out);
+        }else{
             createMonster(1);
+        }
     },  60000 );
+    monster_game();
 }
-
-function draw(){
-    let canvas = document.getElementById('my_canvas');
-    if(!canvas.getContext) return;
-    let ctx = canvas.getContext("2d");
-    //开始代码
-    // ctx.beginPath(); //新建一条path
-    // ctx.moveTo(50, 50); //把画笔移动到指定的坐标
-    // ctx.lineTo(200, 50);  //绘制一条从当前位置到指定坐标(200, 50)的直线.
-    // //闭合路径。会拉一条从当前点到path起始点的直线。如果当前点与起始点重合，则什么都不做
-    // ctx.closePath();
-    // ctx.stroke(); //绘制路径。
-    let img = document.getElementById("init_pic_01");
-    img.onload = function() {
-        ctx.drawImage(img, 0, 0, 40, 50, 100.5, 0.5, 40, 50);
-        ctx.drawImage(img, 0, 0, 40, 50, 100, 0, 40, 50);
-    }
-}
-
-
-
 
 $(document).ready(function(){
     init();

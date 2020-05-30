@@ -128,7 +128,9 @@ function swimMonster() {
 
         }
     }
-    requestAnimationFrame(swimMonster);
+    if(game_start_flag === 1){
+        requestAnimationFrame(swimMonster);
+    }
 }
 
 //怪物转身动画
@@ -150,23 +152,33 @@ function deadMonster(mon){
     mon.setAttribute("data-use","2")
     let monster_opacity = 1.0;
     let monster_dead = setInterval ( function ( ) {
-        mon.style.opacity = monster_opacity.toString();
-        monster_opacity = monster_opacity - 0.1;
-        if(mon.style.opacity === "0.1"){
-            mon.setAttribute("data-use","0");
-            mon.style.display = "none";
-            monster_number--;
-            if(monster_number === 0){
-                document.getElementById("top_warning").style.backgroundColor = "green";
-            }
+        if(game_start_flag === 0){
             clearInterval(monster_dead);
+        }else{
+            mon.style.opacity = monster_opacity.toString();
+            monster_opacity = monster_opacity - 0.1;
+            if(mon.style.opacity === "0.1"){
+                mon.setAttribute("data-use","0");
+                mon.style.display = "none";
+                monster_number--;
+                if(monster_number === 0){
+                    document.getElementById("top_warning").style.backgroundColor = "green";
+                }
+                clearInterval(monster_dead);
+            }
         }
     },  100 );
 }
 
-$(document).ready(function(){
-    // createMonster(1);
-    swimMonster();
-    let getFoodMonster = setInterval(searchFish, 500);
-});
+function monster_game(){
+    let getFoodMonster;
+    if(game_start_flag === 1){
+        swimMonster();
+        getFoodMonster = setInterval(searchFish, 500);
+    }else{
+        clearInterval(getFoodMonster);
+    }
+}
+
+
 

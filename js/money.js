@@ -44,7 +44,9 @@ function coinMove() {
 }
 //删除硬币
 function deleteCoin(img) {
-    document.getElementById("money_buffer").removeChild(img);
+    if(img !== null){
+        document.getElementById("money_buffer").removeChild(img);
+    }
 }
 
 //硬币下落动画
@@ -70,7 +72,6 @@ function collectCoin(coin){
     }
     deleteCoin(coin);
 }
-
-$(document).ready(function(){
+function coin_game(){
     coinMove();
-});
+}
