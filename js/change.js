@@ -45,7 +45,7 @@ function choosePet(pet_type) {
     document.getElementById("menu_background").style.display = "none";
     document.getElementById('my_canvas').style.display = "";
     document.getElementById("choose_pet").style.display = "none";
-    game_init(2, 2);
+    game_init(2, pet_type);
 }
 
 function chooseMod(game_type) {
