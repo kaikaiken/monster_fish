@@ -31,9 +31,38 @@
     <img id="lose_windows" src="./img/window/lose_window_1.png" alt="">
     <div class="window_block" id="lose_window" onmousedown="window_confirm_down(this)" onmouseup="window_confirm_up(this)"></div>
 </div>
+<!--选择模式-->
+<div class="choose_background" id="choose_background">
+    <a class="choose_font">Choose &nbsp Difficulty</a>
+    <div class="box">
+        <img src="img/level/aquarium1.png" alt="" onclick="chooseMod(1)">
+        <a>&nbsp&nbsp Easy</a><br>
+        在简单模式中，怪物出现频率较慢,可以休闲养鱼
+    </div>
+    <div class="box">
+        <img src="img/level/aquarium2.png" alt="" onclick="chooseMod(2)">
+        <a>&nbsp&nbsp Hard</a><br>
+        在困难模式中，怪物出现频率更快，并且更凶狠，但是你能选择一个伙伴来帮助你
+    </div>
+</div>
+
+<!--选择宠物-->
+<div class="choose_background" id="choose_pet">
+    <a class="choose_font">Choose &nbsp Pet</a>
+    <div class="box1">
+        <img src="img/pets/pet_10.jpg" alt="" onclick="choosePet(1)">
+        <a>&nbsp&nbsp Clam</a><br><br>
+        Clam是一个会吐珍珠的伙伴，可以在一个固定时间内，为你提供价值200元的珍珠
+    </div>
+    <div class="box1">
+        <img src="img/pets/pet_20.jpg" alt="" onclick="choosePet(2)">
+        <a>&nbsp&nbsp Skeleton &nbsp Fish</a><br>
+        Skeleton &nbsp Fish 是一只中型Gluppy,在他被怪物吃掉后，却复活了，虽然他生产银币的速度减慢了，但他却能预测怪物出现的位置，并提供警告
+    </div>
+</div>
 
 <!--菜单-->
-<div class="content-box" id="menu_background">
+<div class="content-box" id="menu_background" >
     <h2 class="so-many-shadows">Monster &nbsp Aquarium</h2>
     <div style="text-align:center">
         <button id="start_game_button" type="button" name="startGameBtn_"
@@ -113,6 +142,7 @@
     <img class="pet_sample" id="create_pet_20" src="./img/pets/pet_20.jpg" alt=""
          data-type="2" data-direct="0" style="display: none" draggable="false">
 </div>
+<img class="warning_sample" id="warning_sample" src="./img/warning.png" alt="" style="display: none" draggable="false">
 
 </body>
 </html>

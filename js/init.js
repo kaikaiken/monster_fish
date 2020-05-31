@@ -108,10 +108,20 @@ let monster_number;
 //怪物事件
 let monster_out;
 
+
+//宠物参数
+//怪物出现位置
+let monster_x;
+let monster_y;
+//怪物预言
+let monster_pre;
+
 function init() {
     document.getElementById("simple_game").style.display = "none";
     document.getElementById("menu_background").style.display = "";
     document.getElementById('my_canvas').style.display = "none";
+    document.getElementById("choose_background").style.display="none";
+    document.getElementById("choose_pet").style.display="none";
     game_start_flag = 0;
 }
 
@@ -152,6 +162,8 @@ function game_over() {
     //宠物清零
     document.getElementById("create_pet_10").style.display="none";
     document.getElementById("create_pet_20").style.display="none";
+    document.getElementById("warning_sample").style.display = "none";
+    clearInterval(monster_pre);
     skeleton_game();
 
 }
@@ -212,12 +224,12 @@ function game_init(game_type , pet_type) {
         {
             Monster_health: 60,
             Monster_speed:  2,
-            Monster_fight_back: 0.7
+            Monster_fight_back: 0.8
         },
         {
             Monster_health: 90,
             Monster_speed:  3,
-            Monster_fight_back: 0.8
+            Monster_fight_back: 1
         },
     )
     monster_number = 0;
@@ -231,22 +243,52 @@ function game_init(game_type , pet_type) {
             }
         },  60000 );
     }else if(game_mod === 2){
-        monster_out = setInterval ( function ( ) {
-            if(game_start_flag === 0){
-                clearInterval(monster_out);
-            }else{
-                createMonster(2);
-            }
-        },  55000 );
+        if(pet_type === 2){
+            monster_pre = setInterval ( preMonster,  45000 );
+        }else{
+            monster_out = setInterval ( function ( ) {
+                if(game_start_flag === 0){
+                    clearInterval(monster_out);
+                }else{
+                    createMonster(2 , 0);
+                }
+            },  55000 );
+        }
     }
     monster_game();
 
     //宠物初始化
-    if(pet_type === 1){
-        createPet(1);
+    if(game_mod === 2){
+        if(pet_type === 1){
+            createPet(1);
+        }else{
+            createPet(2);
+            skeleton_game();
+        }
+    }
+}
+
+function preMonster(){
+    if(game_start_flag === 0){
+        clearInterval(monster_pre);
     }else{
-        createPet(2);
-        skeleton_game();
+        monster_x = Math.round(Math.random()*1300) + 25;
+        monster_y = Math.round(Math.random()*500) + 50;
+        document.getElementById("top_warning").style.backgroundColor = "yellow";
+        document.getElementById("warning_sample").style.left = monster_x + "px";
+        document.getElementById("warning_sample").style.top = monster_y + "px";
+        document.getElementById("warning_sample").style.display = "";
+        clearInterval(monster_pre);
+        monster_out = setInterval ( function ( ) {
+            if(game_start_flag === 0){
+                clearInterval(monster_out);
+            }else{
+                document.getElementById("warning_sample").style.display = "none";
+                createMonster(2 , 1);
+                monster_pre = setInterval ( preMonster,  45000 );
+                clearInterval(monster_out);
+            }
+        },  10000 );
     }
 }
 

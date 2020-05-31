@@ -1,18 +1,23 @@
 //怪物边界 25  1295 585  70
 
-function createMonster(type) {
+function createMonster(type , pre) {
     let monster = document.getElementsByClassName("monster_sample");
     for(let i=0;i < monster.length;i++){
         let mon = monster.item(i);
         if( mon.getAttribute("data-type").toString()=== type.toString() && mon.getAttribute("data-use") === "0" ){
-            let random_x = Math.round(Math.random()*1300);
-            let random_y = Math.round(Math.random()*500);
+            if(pre === 1){
+                mon.style.left = monster_x.toString() +"px";
+                mon.style.top = monster_y.toString()+ "px";
+            }else{
+                let random_x = Math.round(Math.random()*1300);
+                let random_y = Math.round(Math.random()*500);
+                mon.style.left = (25 + random_x).toString() +"px";
+                mon.style.top = (50 + random_y).toString()+ "px";
+            }
             mon.style.opacity = "1";
             mon.style.display = "";
             mon.setAttribute("data-use","1");
             monster_number++;
-            mon.style.left = (25 + random_x).toString() +"px";
-            mon.style.top = (50 + random_y).toString()+ "px";
             mon.setAttribute("data-health", monsters[type-1].Monster_health);
             mon.setAttribute("data-direct", "0");
             document.getElementById("top_warning").style.backgroundColor = "red";

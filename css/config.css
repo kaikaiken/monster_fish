@@ -43,6 +43,18 @@ button{
     height: 700px;
     border-radius: 4px;
 }
+.choose_background{
+    background: url(../img/display.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 530px;
+    top: 30px;
+    width: 400px;
+    /* height: 300px; */
+    border-radius: 30px;
+    z-index: 300;
+    opacity: 0.95;
+}
 #top_button_area{
     width: 1400px;
     height: 75px;
@@ -199,4 +211,48 @@ button{
     position: absolute;
     z-index: 275;
 }
+.box{
+    text-align: center;
+    padding: 30px;
+    outline:none;
+    cursor: default;
+}
+.box img {
+    width:200px;
+    height: 200px;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0.95;
+}
+.box a{
+    font-weight: bold;
+    font-size: 30px;
+}
+.choose_font{
+    font-weight: bold;
+    font-size: 40px;
+    padding: 25px;
+    cursor: default;
+}
+.box1{
+    text-align: center;
+    padding: 30px;
+    cursor: default;
+}
+.box1 img {
+    width:100px;
+    height: 100px;
+    cursor: pointer;
+    opacity: 0.95;
+}
+.box1 a{
+    font-weight: bold;
+    font-size: 32px;
+}
+.warning_sample{
+    position: absolute;
+    z-index: 265;
+    width: 100px;
+    height: 60px;
 
+}

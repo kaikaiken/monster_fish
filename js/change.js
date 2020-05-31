@@ -29,15 +29,34 @@ function change_mouse_up(btn , type) {
             }
 
         }else if(type === 3){
-            document.getElementById("simple_game").style.display = "";
-            document.getElementById("menu_background").style.display = "none";
-            document.getElementById('my_canvas').style.display = "";
-            game_init(2 , 2);
+            document.getElementById("choose_background").style.display = "";
         }else{
             addFish();
             costMoney(buy_Guppy_cost);
             // addTestFish();
         }
+    }
+
+
+}
+
+function choosePet(pet_type) {
+    document.getElementById("simple_game").style.display = "";
+    document.getElementById("menu_background").style.display = "none";
+    document.getElementById('my_canvas').style.display = "";
+    document.getElementById("choose_pet").style.display = "none";
+    game_init(2, 2);
+}
+
+function chooseMod(game_type) {
+    document.getElementById("choose_background").style.display = "none";
+    if(game_type === 1){
+        document.getElementById("simple_game").style.display = "";
+        document.getElementById("menu_background").style.display = "none";
+        document.getElementById('my_canvas').style.display = "";
+        game_init(game_type , 0);
+    }else{
+        document.getElementById("choose_pet").style.display = "";
     }
 
 
