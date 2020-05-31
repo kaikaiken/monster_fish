@@ -7,6 +7,7 @@
     <title>Monster Aquarium</title>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/loading.js"></script>
     <script src="js/fish.js"></script>
     <script src="js/init.js"></script>
     <script src="js/player.js"></script>
@@ -20,6 +21,10 @@
 <body onselectstart="return false;">
 <canvas id="my_canvas" width="1400" height="625">你的浏览器不支持 canvas，请升级你的浏览器。</canvas>
 
+<!--loading界面-->
+<div id="blocker">
+    <span>Loading...</span>
+</div>
 <!--弹出框-->
 <!--胜利-->
 <div class="window" id="win_window1" style="display: none">

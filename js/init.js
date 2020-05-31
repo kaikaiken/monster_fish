@@ -293,6 +293,11 @@ function preMonster(){
 }
 
 $(document).ready(function(){
+    start_fade();
     init();
+    let fade = setInterval ( function ( ) {
+        stop();
+        clearInterval(fade);
+    },  3000 );
 });
 

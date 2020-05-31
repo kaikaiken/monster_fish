@@ -45,7 +45,10 @@ function choosePet(pet_type) {
     document.getElementById("menu_background").style.display = "none";
     document.getElementById('my_canvas').style.display = "";
     document.getElementById("choose_pet").style.display = "none";
+    start_fade();
     game_init(2, pet_type);
+    stop();
+
 }
 
 function chooseMod(game_type) {
@@ -54,7 +57,10 @@ function chooseMod(game_type) {
         document.getElementById("simple_game").style.display = "";
         document.getElementById("menu_background").style.display = "none";
         document.getElementById('my_canvas').style.display = "";
+        start_fade();
         game_init(game_type , 0);
+        stop();
+
     }else{
         document.getElementById("choose_pet").style.display = "";
     }
