@@ -38,7 +38,9 @@ function coinMove() {
             }
         }
     }
-    requestAnimationFrame(coinMove);
+    if(game_start_flag === 1){
+        requestAnimationFrame(coinMove);
+    }
 }
 //删除硬币
 function deleteCoin(img) {
