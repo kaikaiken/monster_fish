@@ -54,6 +54,13 @@ $(document).ready(function(){
     })
 });
 
+$(function(){
+    $(document).keypress(function (e) {
+        if (e.keyCode === 65){
+            addMoney(1000);
+        }
+            })
+});
 function attack(mon) {
     let health = mon.getAttribute("data-health");
     let attack = parseInt(health,10) - player_attack;

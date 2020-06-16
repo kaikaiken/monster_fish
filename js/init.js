@@ -213,10 +213,14 @@ function game_init(game_type , pet_type) {
     game_buy_Guppy_button.style.backgroundImage="url("+ "./img/buttons/" + game_buy_Guppy_button.getAttribute("name") + "1.jpg)";
     game_update_Food_button = document.getElementById("game_update_Food_button");
     game_update_Food_button.disable = true;
+    let foodName = game_update_Food_button.getAttribute("name").slice(0 , -1) + 1;
+    game_update_Food_button.setAttribute("name" , foodName);
     game_update_Food_button.style.backgroundImage="url("+ "./img/buttons/" + game_update_Food_button.getAttribute("name") + "2.jpg)";
     game_buy_Egg_button = document.getElementById("game_buy_Egg_button");
     game_buy_Egg_button.disable = true;
-    game_buy_Egg_button.style.backgroundImage="url("+ "./img/buttons/" + game_buy_Egg_button.getAttribute("name") + "2.jpg)";
+    game_buy_Egg_button.style.backgroundImage="url(img/buttons/eggBtn_12.jpg)";
+    let newName = game_buy_Egg_button.getAttribute("name").slice(0 , -1) + 1;
+    game_buy_Egg_button.setAttribute("name" , newName);
     document.getElementById("top_warning").style.backgroundColor = "green";
 
     //怪物初始化

@@ -45,7 +45,9 @@ function coinMove() {
 //删除硬币
 function deleteCoin(img) {
     if(img !== null){
-        document.getElementById("money_buffer").removeChild(img);
+        if(game_start_flag === 1){
+            document.getElementById("money_buffer").removeChild(img);
+        }
     }
 }
 

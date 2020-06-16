@@ -323,7 +323,7 @@ function swimFish() {
                     new_y = new_y -fish_speed;
                 }
             }
-            if(x < 2 && x > -2 && y<=0 && y > -2){
+            if(x === 0 && y === 0){
                 if(getMoveFish(img.id) === 1){
                     fishes[fish_id].Guppy_move = 0 ;
                 }else if(getMoveFish(img.id) === 2 &&  fishes[fish_id].Guppy_target_food > -1){
@@ -332,7 +332,6 @@ function swimFish() {
                         eatFood(img , fish_id , my_food);
                     }
                 }
-
             }
 
             if(x > 0 && fishes[fish_id].Guppy_direct ===0){
